@@ -1,11 +1,9 @@
-// Toggle class active untuk humberger menu
+
 const navbarNav = document.querySelector('.navbar-nav');
-// ketika hamburger menu di klik
 document.querySelector('#navbar-menu').onclick = () => {
     navbarNav.classList.toggle('active');
 };
 
-//klik diluar elemen
 const hm = document.querySelector('#navbar-menu');
 
 document.addEventListener('click', function(e){
@@ -42,10 +40,27 @@ document.addEventListener("DOMContentLoaded", function() {
             document.getElementById("name").innerText = name;
         }
     }
-
-    // Panggil replaceName saat halaman pertama kali dimuat
     replaceName();
-
-    // Tambahkan event listener ke tombol
     document.getElementById("tombol").addEventListener("click", replaceName);
 });
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const bannerContainer = document.querySelector('.home');
+    const images = [
+        'img/bg/bg-1.jpg',
+        'img/bg/bg-2.jpg',
+        'img/bg/bg-3.jpg',
+    ];
+    let currentImageIndex = 0;
+    const changeInterval = 5000;
+
+    function changeBannerImage() {
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        bannerContainer.style.backgroundImage = `url(${images[currentImageIndex]})`;
+    }
+
+    setInterval(changeBannerImage, changeInterval);
+});
+
+
